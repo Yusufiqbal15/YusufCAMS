@@ -65,7 +65,7 @@ const SignUp: React.FC = () => {
           </button>
         </form>
       </div>
-      hello
+     
     </div>
   );
 };
