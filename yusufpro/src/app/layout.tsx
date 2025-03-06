@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { AuthProvider } from "./context/AuthContext";
 import Sidebar from "../app/sidebar"
 import SignUp from "../app/sign-up/page"
+import { useAuth } from "./context/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,15 +26,24 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const { user, logOut } = useAuth();
+
+  if (!user) {
+    return <SignUp />;
+  }
+
+  
   return (
     <html lang="en">
+      <AuthProvider>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <SignUp/>
+      > <button onClick={logOut}>Sign out</button>
         <Sidebar/>
         {children}
+       
       </body>
+      </AuthProvider>
     </html>
   );
 }

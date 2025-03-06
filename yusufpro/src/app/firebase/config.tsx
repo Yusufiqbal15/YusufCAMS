@@ -1,21 +1,14 @@
-
-import { getApps, initializeApp, getApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-import {getAuth} from 'firebase/auth'
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
- 
+    apiKey: "AIzaSyAVP0aqek1mj56h-EJLaTKduv8nc0d7XWQ",
+    authDomain: "clgmansy.firebaseapp.com",
+    projectId: "clgmansy",
+    storageBucket: "clgmansy.firebasestorage.app",
+    messagingSenderId: "267292209569",
+    appId: "1:267292209569:web:9ca7cc9e863a807c445be0",
 };
 
-// Initialize Firebase
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
-const auth= getAuth(app)
-
-export {app, auth}
-
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);

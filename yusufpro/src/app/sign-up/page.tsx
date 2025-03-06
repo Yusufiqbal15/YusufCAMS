@@ -2,6 +2,7 @@
 import { useState } from "react";
 import {useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth'
 import {auth} from '../firebase/config'
+import { useAuth } from "../context/AuthContext";
 
 const SignUp: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -20,6 +21,7 @@ const SignUp: React.FC = () => {
     e.preventDefault();
     console.log("Form Data Submitted:", formData);
   };
+  const { signIn } = useAuth();
 
   return (
 
@@ -63,6 +65,7 @@ const SignUp: React.FC = () => {
           >
             Sign Up
           </button>
+          <button onClick={ signIn }>Sign in with Google</button>
         </form>
       </div>
      
